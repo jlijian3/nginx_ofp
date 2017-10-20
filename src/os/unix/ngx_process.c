@@ -11,7 +11,9 @@
 #include <ngx_channel.h>
 
 #include "odp.h"
-#include "odp/helper/linux.h"
+//#include "odp/helper/linux.h"
+#include "odp/helper/linux/process.h"
+#include "odp/helper/linux/pthread.h"
 #include "ofp.h"
 
 typedef struct {

@@ -321,6 +321,9 @@ ngx_select_del_event(ngx_event_t *ev, ngx_int_t event, ngx_uint_t flags)
     return NGX_OK;
 }
 
+#ifndef OFP_PKT_RX_BURST_SIZE
+#define OFP_PKT_RX_BURST_SIZE 16
+#endif
 
 static ngx_int_t
 ngx_select_process_events(ngx_cycle_t *cycle, ngx_msec_t timer,

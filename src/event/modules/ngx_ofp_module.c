@@ -176,6 +176,7 @@ int my_webserver(int if_count, char **if_name)
 	 * Start mapping thread from core #1
 	 */
 	memset(&app_init_params, 0, sizeof(app_init_params));
+	ofp_init_global_param(&app_init_params);
 
 	app_init_params.linux_core_id = 0;
 

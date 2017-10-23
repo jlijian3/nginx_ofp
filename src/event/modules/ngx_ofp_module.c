@@ -144,8 +144,8 @@ int my_webserver(int if_count, char **if_name)
 	odp_cpumask_t cpumask;
 	char cpumaskstr[64];
 	odp_pktio_param_t pktio_param;
-        odp_pktin_queue_param_t pktin_param;
-        odp_pktout_queue_param_t pktout_param;
+    odp_pktin_queue_param_t pktin_param;
+    odp_pktout_queue_param_t pktout_param;
 
 	struct rlimit rlp;
 	getrlimit(RLIMIT_CORE, &rlp);
@@ -205,11 +205,10 @@ int my_webserver(int if_count, char **if_name)
 		exit(EXIT_FAILURE);
 	}
 
-	odp_pktio_param_init(&pktio_param);
+	      odp_pktio_param_init(&pktio_param);
         pktio_param.in_mode = ODP_PKTIN_MODE_DIRECT;
         pktio_param.out_mode = ODP_PKTOUT_MODE_DIRECT;
 
-	/*
         odp_pktin_queue_param_init(&pktin_param);
         pktin_param.op_mode = ODP_PKTIO_OP_MT_UNSAFE;
         pktin_param.hash_enable = 1;
@@ -217,12 +216,13 @@ int my_webserver(int if_count, char **if_name)
         pktin_param.num_queues = 1;
         char *num_queues_str = getenv("NUM_QUEUES");
         if (num_queues_str) pktin_param.num_queues = atoi(num_queues_str);
-	*/
-	odp_pktin_queue_param_init(&pktin_param);
-	pktin_param.op_mode = ODP_PKTIO_OP_MT_UNSAFE;
-	pktin_param.hash_enable = 1;
-	pktin_param.hash_proto.proto.ipv4_tcp = 1;
-	pktin_param.num_queues = num_workers;
+        /*
+        odp_pktin_queue_param_init(&pktin_param);
+        pktin_param.op_mode = ODP_PKTIO_OP_MT_UNSAFE;
+        pktin_param.hash_enable = 1;
+        pktin_param.hash_proto.proto.ipv4_tcp = 1;
+        pktin_param.num_queues = num_workers;
+        */
 
 
         odp_pktout_queue_param_init(&pktout_param);

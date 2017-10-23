@@ -189,7 +189,7 @@ ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc, void *data,
 
     odph_linux_process_t odph_proc[1];
     static int cpu_index = 0;
-    odp_pktin_queue_t in_queues[OFP_PKTIN_QUEUE_MAX];
+    odp_pktin_queue_t in_queues[OFP_PKTOUT_QUEUE_MAX];
     int num_queues = 0;
     odp_pktio_t pktio;
     odph_linux_thr_params_t thr_params;
@@ -204,7 +204,7 @@ ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc, void *data,
 
     free(dev);
 
-    num_queues = odp_pktin_queue(pktio, in_queues, OFP_PKTIN_QUEUE_MAX);
+    num_queues = odp_pktin_queue(pktio, in_queues, OFP_PKTOUT_QUEUE_MAX);
 
     if (num_queues < 1 )
            OFP_ERR("Uneven number of queues: %d", num_queues);
